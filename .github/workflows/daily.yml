@@ -1,0 +1,29 @@
+name: Daily Lab Report
+
+on:
+  schedule:
+    # This runs at 6:00 PM EST (23:00 UTC) every day
+    - cron: '0 23 * * *'
+  workflow_dispatch: # This adds a "Run" button so you can test it manually
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: pip install gspread pandas google-auth
+
+      - name: Run script
+        env:
+          GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+          GMAIL_SENDER: ${{ secrets.GMAIL_SENDER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+        run: python lab_report.py
