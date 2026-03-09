@@ -11,12 +11,12 @@ from google.oauth2.service_account import Credentials
 # --- SETTINGS ---
 # These are pulled from your GitHub Secrets (GCP_CREDENTIALS, GMAIL_SENDER, GMAIL_APP_PASSWORD)
 SENDER_EMAIL = os.environ.get('GMAIL_SENDER')
-RECEIVER_EMAIL = "wife_email@gmail.com"  # <--- UPDATE THIS
+RECEIVER_EMAIL = "ryuzaki.vespertine@gmail.com"  # <--- UPDATE THIS
 APP_PASSWORD = os.environ.get('GMAIL_APP_PASSWORD')
 GCP_JSON = os.environ.get('GCP_CREDENTIALS')
 
 # The exact name of your Google Sheet
-SHEET_NAME = 'Lab Scanning Log' 
+SHEET_NAME = 'labtest' 
 
 def run_daily_report():
     try:
